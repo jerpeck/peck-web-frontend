@@ -1,7 +1,6 @@
 function sendOneEmail(o){
   const main = async () => {
-    console.log(o);
-    const response = await fetch("http://localhost:3001/send", {
+    await fetch("http://localhost:3001/send", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -11,7 +10,6 @@ function sendOneEmail(o){
       .then((res) => res.json())
       .then(async (res) => {
         const resData = await res;
-        console.log(resData);
         if (resData.status === "success") {
           alert("Message Sent");
         } else if (resData.status === "fail") {
@@ -28,7 +26,7 @@ function sendEmail(contactData){
 }
 
 function sendToClientEmail(contactData){
-  const {contactEmail, contactName, contactMessage, contactPhone, contactSubject} = contactData;
+  const {contactEmail, contactName} = contactData;
   const emailData = {
     toAddress: `${contactEmail}`,
     emailSubject: `Thank You for Contacting Peck Web Development`,
