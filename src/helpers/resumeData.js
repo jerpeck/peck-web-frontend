@@ -1,0 +1,173 @@
+const resumeData = {
+    "main": {
+      "name":"Peck Web Development",
+      "description":"Professional, affordable small and medium business websites for the Mendonoma Coast",
+      "image":"profilepic.jpg",
+      "bio":"With a twenty year career in Northern California fine dining and restaurants I have a keen sense of what brings customers to successful businesses. With training in technologies like React, Node, Express, and MongoDB, I can quickly get your business active converting customers with an attractive website.",
+      "contactmessage":"Get in Touch.",
+      "email": "jpeck@peck-web.com",
+      "phone": "707-799-7894",
+      "github":"https://github.com/nordicgiant2/react-nice-resume",
+      "project":"https://github.com/nordicgiant2/react-nice-resume",
+      "address":{
+        "street":"PO Box 1790",
+        "city":"Gualala",
+        "state":"California",
+        "zip": "95445"
+      },
+      "website": "",
+      "resumedownload":"",
+      "social":[
+        {
+          "name":"facebook",
+          "url":"https://www.facebook.com/peckweb/",
+          "className":"fa fa-facebook"
+        },
+        {
+          "name":"github",
+          "url":"https://github.com/jerpeck",
+          "className":"fa fa-github"
+        }
+      ]
+    },
+    "resume":{
+      "skillmessage":"Here you can create a short write-up of your skills to show off to employers",
+      "education":[
+        {
+          "school":"University?",
+          "degree":"Masters in Beer tasting",
+          "graduated":"April 2017",
+          "description":"Describe your experience at school, what you learned, what useful skills you have acquired etc."
+        },
+        {
+          "school":"School #1 Maybe College?",
+          "degree":"What did you study 101",
+          "graduated":"March 2013",
+          "description":"Describe your experience at school, what you learned, what useful skills you have acquired etc."
+        }
+      ],
+      "work":[
+        {
+          "company":"Awesome Design Studio",
+          "title":"Senior UX God ",
+          "years":"March 2018 - Present",
+          "description":"Describe work, special projects, notable achievements, what technologies you have been working with, and anything else that would be useful for an employer to know."
+        },
+        {
+          "company":"Super Cool Studio",
+          "title":"Junior bug fixer",
+          "years":"March 2017 - February 2018",
+          "description":"Describe work, special projects, notable achievements, what technologies you have been working with, and anything else that would be useful for an employer to know."
+        }
+      ],
+      "skills":[
+        {
+          "name":"Python",
+          "level":"60%"
+        },
+        {
+          "name":"VueJs",
+          "level":"55%"
+        },
+        {
+          "name":"ReactJs",
+          "level":"50%"
+        },
+        {
+          "name":"CSS",
+          "level":"90%"
+        },
+        {
+          "name":"PHP",
+          "level":"80%"
+        },
+        {
+          "name":"Swift",
+          "level":"50%"
+        },
+        {
+          "name":"JAVA",
+          "level":"80%"
+        }
+      ]
+    },
+    "portfolio":{
+      "projects": [
+        {
+          "title":"Restaurant",
+          "category":"",
+          "image":"restaurant.jpg",
+          "url":""
+        },
+        {
+          "title":"Retail",
+          "category":"",
+          "image":"retail.jpg",
+          "url":""
+        },
+        {
+          "title":"Construction / Trade",
+          "category":"",
+          "image":"construction.jpg",
+          "url":""
+        },
+        {
+          "title":"Hotel / Lodging",
+          "category":"",
+          "image":"hotel.jpg",
+          "url":""
+        },
+        {
+          "title":"Legal",
+          "category":"",
+          "image":"legal.jpg",
+          "url":""
+        },
+        {
+          "title":"Accountant",
+          "category":"",
+          "image":"accountant.jpg",
+          "url":""
+        },
+        {
+          "title":"Medical / Dental Office",
+          "category":"",
+          "image":"doctor.jpg",
+          "url":""
+        },
+        {
+          "title":"E-Commerce",
+          "category":"",
+          "image":"ecommerce.jpg",
+          "url":""
+        },
+        {
+          "title":"Resume / Portfolio",
+          "category":"",
+          "image":"resume.jpg",
+          "url":""
+        },
+        {
+          "title":"Real Estate Office",
+          "category":"",
+          "image":"realestate.jpg",
+          "url":""
+        },
+        {
+          "title":"Non-Profit Organization",
+          "category":"",
+          "image":"nonprofit.jpg",
+          "url":""
+        },
+        {
+          "title":"Personal Blog",
+          "category":"",
+          "image":"blog.jpg",
+          "url":""
+        }
+      ]
+    }
+  }
+
+export default resumeData;
+  

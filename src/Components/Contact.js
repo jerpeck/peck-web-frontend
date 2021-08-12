@@ -1,62 +1,57 @@
-import React, { Component } from "react";
+import React from "react";
 import { Fade, Slide } from "react-reveal";
+import { useFormik } from 'formik';
 
-class Contact extends Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      contactData: {
-        contactName: "",
-        contactEmail: "",
-        contactPhone: "",
-        contactSubject: "",
-        contactMessage: "",
-      },
-    }
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.resetContactData = this.resetContactData.bind(this);
-  }
-
-  handleChange(e){
-    const newContactData = this.state.contactData;
-    newContactData[e.target.id] = e.target.value
-    this.setState({contactData: newContactData});
-  };
-
-  handleSubmit(e){
-    e.preventDefault();
-    this.props.sendContactEmails(this.state.contactData);
-    this.resetContactData();
-    // send emails
-      // email to me 
-      // email to contact
-    // reset state
-  }
-
-  resetContactData(){
-    this.setState({    
-      contactData: {
+function Contact(props) {
+  // if (!props.data) return null;
+  
+  const formik = useFormik({
+    initialValues: {
       contactName: "",
       contactEmail: "",
       contactPhone: "",
       contactSubject: "",
       contactMessage: "",
-    },})
-  }
+    },
+    onSubmit: values => {props.sendContactEmails(values)}
+  });
 
-  render() {
-    if (!this.props.data) return null;
+  console.log('contact props: ', props);
+  const {name, phone, contactmessage} = props.data;
+  const {street, city, state, zip} = props.data.address;
+  
+  // handleChange(e){
+  //   const newContactData = this.state.contactData;
+  //   newContactData[e.target.id] = e.target.value
+  //   this.setState({contactData: newContactData});
+  // };
 
-    const name = this.props.data.name;
-    const street = this.props.data.address.street;
-    const city = this.props.data.address.city;
-    const state = this.props.data.address.state;
-    const zip = this.props.data.address.zip;
-    const phone = this.props.data.phone;
-    const message = this.props.data.contactmessage;
+  // handleSubmit(e){
+  //   e.preventDefault();
+  //   this.props.sendContactEmails(this.state.contactData);
+  //   this.resetContactData();
+  // }
 
-    const {contactName, contactEmail, contactPhone, contactSubject, contactMessage} = this.state.contactData;
+  // resetContactData(){
+  //   this.setState({    
+  //     contactData: {
+  //     contactName: "",
+  //     contactEmail: "",
+  //     contactPhone: "",
+  //     contactSubject: "",
+  //     contactMessage: "",
+  //   },})
+  // }
+
+  // render() {
+
+    // const city = props.data.address.city;
+    // const state = props.data.address.state;
+    // const zip = props.data.address.zip;
+    // const phone = props.data.phone;
+    // const contactmessage = props.data.contactmessage;
+
+    // const {contactName, contactEmail, contactPhone, contactSubject, contactMessage} = this.state.contactData;
 
     return (
       <section id="contact">
@@ -69,7 +64,7 @@ class Contact extends Component {
             </div>
 
             <div className="ten columns">
-              <p className="lead">{message}</p>
+              <p className="lead">{contactmessage}</p>
             </div>
           </div>
         </Fade>
@@ -80,7 +75,7 @@ class Contact extends Component {
               <form
                 id="contactForm"
                 name="contactForm"
-                onSubmit={this.handleSubmit}
+                onSubmit={formik.handleSubmit}
               >
                 <fieldset>
                   <div>
@@ -88,12 +83,12 @@ class Contact extends Component {
                       Name <span className="required">*</span>
                     </label>
                     <input
-                      type="text"
-                      value={contactName}
                       size="35"
                       id="contactName"
                       name="contactName"
-                      onChange={this.handleChange}
+                      type="text"
+                      onChange={formik.handleChange}
+                      value={formik.values.contactName}
                     />
                   </div>
 
@@ -102,12 +97,12 @@ class Contact extends Component {
                       Email <span className="required">*</span>
                     </label>
                     <input
-                      type="text"
-                      value={contactEmail}
                       size="35"
                       id="contactEmail"
                       name="contactEmail"
-                      onChange={this.handleChange}
+                      type="text"
+                      onChange={formik.handleChange}
+                      value={formik.values.contactEmail}
                     />
                   </div>
 
@@ -116,24 +111,24 @@ class Contact extends Component {
                       Phone <span className="required">*</span>
                     </label>
                     <input
-                      type="text"
-                      value={contactPhone}
                       size="35"
                       id="contactPhone"
                       name="contactPhone"
-                      onChange={this.handleChange}
+                      type="text"
+                      onChange={formik.handleChange}
+                      value={formik.values.contactPhone}
                     />
                   </div>
 
                   <div>
                     <label htmlFor="contactSubject">Subject</label>
                     <input
-                      type="text"
-                      value={contactSubject}
                       size="35"
                       id="contactSubject"
                       name="contactSubject"
-                      onChange={this.handleChange}
+                      type="text"
+                      onChange={formik.handleChange}
+                      value={formik.values.contactSubject}
                     />
                   </div>
 
@@ -146,8 +141,8 @@ class Contact extends Component {
                       rows="15"
                       id="contactMessage"
                       name="contactMessage"
-                      value={contactMessage}
                       onChange={this.handleChange}
+                      value={formik.contactMessage}
                     ></textarea>
                   </div>
 
@@ -186,7 +181,7 @@ class Contact extends Component {
         </div>
       </section>
     );
-  }
+  // }
 }
 
 export default Contact;

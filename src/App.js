@@ -9,7 +9,8 @@ import Contact from "./Components/Contact";
 import Portfolio from "./Components/Portfolio";
 import sendEmail from "./helpers/sendEmail";
 import EmailSent from "./Components/EmailSent";
-
+import resumeData from "./helpers/resumeData";
+import ErrorBoundary from "./Components/ErrorBoundary";
 
 class App extends Component {
   constructor(props) {
@@ -27,22 +28,24 @@ class App extends Component {
   }
 
   getResumeData() {
-    $.ajax({
-      url: "./resumeData.json",
-      dataType: "json",
-      cache: false,
-      success: function(data) {
-        this.setState({ resumeData: data });
-      }.bind(this),
-      error: function(xhr, status, err) {
-        console.log(err);
-        alert(err);
-      }
-    });
+    this.setState({resumeData: resumeData})
+    // $.ajax({
+    //   url: "./resumeData.json",
+    //   dataType: "json",
+    //   cache: false,
+    //   success: function(data) {
+    //     this.setState({ resumeData: data });
+    //   }.bind(this),
+    //   error: function(xhr, status, err) {
+    //     console.log(err);
+    //     alert(err);
+    //   }
+    // });
   }
 
   componentDidMount() {
     this.getResumeData();
+    console.log('app state.resumeData: ', this.state.resumeData);
   }
 
   sendContactEmails(contactData){
@@ -59,12 +62,17 @@ class App extends Component {
   };
 
   render() {
+    if(!this.state.resumeData) return null;
+
     return (
       <div className="App">
         <Header data={this.state.resumeData.main} />
         <About data={this.state.resumeData.main} />
         <Portfolio data={this.state.resumeData.portfolio} />
+        <ErrorBoundary>
+
         <Contact data={this.state.resumeData.main} sendContactEmails={this.sendContactEmails}/>
+        </ErrorBoundary>
         <Footer data={this.state.resumeData.main} />
         <EmailSent emailSentOpen={this.state.emailSentOpen} closeEmailSent={this.closeEmailSent}/>
       </div>

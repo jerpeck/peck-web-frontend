@@ -2,8 +2,17 @@ import React, { Component } from "react";
 import Fade from "react-reveal";
 
 class About extends Component {
+  constructor(props){
+    super(props);
+  }
+
+  componentDidMount(){
+  };
+
   render() {
     if (!this.props.data) return null;
+
+    console.log("about props: ", this.props);
 
     const name = this.props.data.name;
     const profilepic = "images/" + this.props.data.image;
