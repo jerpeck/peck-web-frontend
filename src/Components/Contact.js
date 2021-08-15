@@ -1,49 +1,51 @@
 import React, { Component } from "react";
 import { Fade, Slide } from "react-reveal";
 
+import ContactForm from './ContactForm';
+
 class Contact extends Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      contactData: {
-        contactName: "",
-        contactEmail: "",
-        contactPhone: "",
-        contactSubject: "",
-        contactMessage: "",
-      },
-    }
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.resetContactData = this.resetContactData.bind(this);
-  }
+  // constructor(props){
+  //   super(props);
+  //   this.state = {
+  //     contactData: {
+  //       contactName: "",
+  //       contactEmail: "",
+  //       contactPhone: "",
+  //       contactSubject: "",
+  //       contactMessage: "",
+  //     },
+  //   }
+  //   this.handleChange = this.handleChange.bind(this);
+  //   this.handleSubmit = this.handleSubmit.bind(this);
+  //   this.resetContactData = this.resetContactData.bind(this);
+  // }
 
-  handleChange(e){
-    const newContactData = this.state.contactData;
-    newContactData[e.target.id] = e.target.value
-    this.setState({contactData: newContactData});
-  };
+  // handleChange(e){
+  //   const newContactData = this.state.contactData;
+  //   newContactData[e.target.id] = e.target.value
+  //   this.setState({contactData: newContactData});
+  // };
 
-  handleSubmit(e){
-    e.preventDefault();
-    this.props.sendContactEmails(this.state.contactData);
-    this.resetContactData();
-    // send emails
-      // email to me 
-      // email to contact
-    // reset state
-  }
+  // handleSubmit(e){
+  //   e.preventDefault();
+  //   this.props.sendContactEmails(this.state.contactData);
+  //   this.resetContactData();
+  //   // send emails
+  //     // email to me 
+  //     // email to contact
+  //   // reset state
+  // }
 
-  resetContactData(){
-    this.setState({    
-      contactData: {
-      contactName: "",
-      contactEmail: "",
-      contactPhone: "",
-      contactSubject: "",
-      contactMessage: "",
-    },})
-  }
+  // resetContactData(){
+  //   this.setState({    
+  //     contactData: {
+  //     contactName: "",
+  //     contactEmail: "",
+  //     contactPhone: "",
+  //     contactSubject: "",
+  //     contactMessage: "",
+  //   },})
+  // }
 
   render() {
     if (!this.props.data) return null;
@@ -56,7 +58,7 @@ class Contact extends Component {
     const phone = this.props.data.phone;
     const message = this.props.data.contactmessage;
 
-    const {contactName, contactEmail, contactPhone, contactSubject, contactMessage} = this.state.contactData;
+    // const {contactName, contactEmail, contactPhone, contactSubject, contactMessage} = this.state.contactData;
 
     return (
       <section id="contact">
@@ -77,89 +79,7 @@ class Contact extends Component {
         <div className="row">
           <Slide left duration={1000}>
             <div className="eight columns">
-              <form
-                id="contactForm"
-                name="contactForm"
-                onSubmit={this.handleSubmit}
-              >
-                <fieldset>
-                  <div>
-                    <label htmlFor="contactName">
-                      Name <span className="required">*</span>
-                    </label>
-                    <input
-                      type="text"
-                      value={contactName}
-                      size="35"
-                      id="contactName"
-                      name="contactName"
-                      onChange={this.handleChange}
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="contactEmail">
-                      Email <span className="required">*</span>
-                    </label>
-                    <input
-                      type="text"
-                      value={contactEmail}
-                      size="35"
-                      id="contactEmail"
-                      name="contactEmail"
-                      onChange={this.handleChange}
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="contactPhone">
-                      Phone <span className="required">*</span>
-                    </label>
-                    <input
-                      type="text"
-                      value={contactPhone}
-                      size="35"
-                      id="contactPhone"
-                      name="contactPhone"
-                      onChange={this.handleChange}
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="contactSubject">Subject</label>
-                    <input
-                      type="text"
-                      value={contactSubject}
-                      size="35"
-                      id="contactSubject"
-                      name="contactSubject"
-                      onChange={this.handleChange}
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="contactMessage">
-                      Message <span className="required">*</span>
-                    </label>
-                    <textarea
-                      cols="50"
-                      rows="15"
-                      id="contactMessage"
-                      name="contactMessage"
-                      value={contactMessage}
-                      onChange={this.handleChange}
-                    ></textarea>
-                  </div>
-
-                  <div>
-                    <button className="submit">Submit</button>
-                    <span id="image-loader">
-                      <img alt="" src="images/loader.gif" />
-                    </span>
-                  </div>
-                </fieldset>
-              </form>
-
+              <ContactForm sendContactEmails={this.props.sendContactEmails}/>
               <div id="message-warning"> Error boy</div>
               <div id="message-success">
                 <i className="fa fa-check"></i>Your message was sent, thank you!

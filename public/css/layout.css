@@ -855,7 +855,7 @@ call-to-action .button {
 	outline: none;
    font-size: 15px;
    line-height: 24px;
-   width: 65%;
+   width: 390px;
 }
 #contact input:focus,
 #contact textarea:focus,
@@ -882,6 +882,26 @@ call-to-action .button {
 #contact span.required {
 	color: #0762f9;
 	font-size: 13px;
+   margin: 0 5px;
+}
+#contact .form-item-container{
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+   margin-right: 52px;
+}
+#contact .label-error-container{
+   display: flex;
+   flex-direction: column;
+}
+#contact .label-error-container label{
+   display: flex;
+   flex-direction: row;
+   justify-content: flex-start;
+   margin-bottom: 0;
+}
+#contact .error{
+   color: #330505;
 }
 #message-warning, #message-success {
    display: none;
