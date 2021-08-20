@@ -1,6 +1,6 @@
 function sendOneEmail(o){
   const main = async () => {
-    await fetch("http://localhost:3001/send", {
+    await fetch("/api/sendmail", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
